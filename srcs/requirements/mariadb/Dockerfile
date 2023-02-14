@@ -1,7 +1,12 @@
 FROM alpine:3.16
 
-# testing
-RUN apk add mariadb nginx openssl
+# Install MariaDB
+RUN apk update && apk add mariadb
 
+# Run configuration script
+COPY tools/config.sh /tmp/config.sh
+RUN chmod -x /tmp/config.sh
 
-ENTRYPOINT [ "nginx", "-g", "daemon off;" ]
+# Run
+COPY tools/run.sh /tmp/run.sh
+ENTRYPOINT [ "sh", "/tmp/config.sh" ]

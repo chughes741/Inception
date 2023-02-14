@@ -20,4 +20,7 @@ RUN cp wp-cli.phar /usr/bin/wp
 WORKDIR /var/www/html/wordpress
 
 COPY tools/config.sh /tmp/config.sh
-ENTRYPOINT [ "sh", "/tmp/config.sh" ]
+RUN chmod -x /tmp/config.sh
+
+COPY tools/run.sh /tmp/run.sh
+ENTRYPOINT [ "sh", "/tmp/run.sh" ]
