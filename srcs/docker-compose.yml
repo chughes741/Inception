@@ -15,19 +15,29 @@ services:
     build: wordpress/
     ports:
       - "9000:9000"
+    # volumes:
+      # - ""
+    depends_on:
+      - mariadb
     networks:
       - frontend
       - backend
     restart: always
+    # environment:
+      # - name=value
 
   mariadb:
     container_name: mariadb
     build: mariadb/
     ports:
       - "3306:3306"
+    # volumes:
+      # - ""
     networks:
       - backend
     restart: always
+    # environment:
+      # - name=value
 
 networks:
   frontend:
