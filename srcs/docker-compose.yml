@@ -10,6 +10,21 @@ services:
       - frontend
     restart: always
 
+  wordpress:
+    container_name: wordpress
+    build: wordpress/
+    networks:
+      - frontend
+      - backend
+    restart: always
+
+  mariadb:
+    container_name: mariadb
+    build: mariadb/
+    networks:
+      - backend
+    restart: always
+
 networks:
   frontend:
-
+  backend:
