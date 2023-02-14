@@ -15,8 +15,8 @@ services:
     build: requirements/wordpress/
     ports:
       - "9000:9000"
-    # volumes:
-      # - ""
+    volumes: # TODO change mount location
+      - wordpressdb-data:/var/
     depends_on:
       - mariadb
     networks:
@@ -31,13 +31,20 @@ services:
     build: requirements/mariadb/
     ports:
       - "3306:3306"
-    # volumes:
-      # - ""
+    volumes:
+      - mariadb-data:/var/lib/mysql
     networks:
       - backend
     restart: always
     # environment:
-      # - name=value
+      # ROOT_PW
+      # DB_NAME
+      # DB_PW
+      # DB_UN
+
+volumes:
+  mariadb-data:
+  wordpressdb-data:
 
 networks:
   frontend:
