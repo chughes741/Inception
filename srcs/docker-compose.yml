@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  nginx:
+    container_name: nginx
+    build: nginx/
+    ports:
+      - "443:443"
+    networks:
+      - frontend
+    restart: always
+
+networks:
+  frontend:
+
