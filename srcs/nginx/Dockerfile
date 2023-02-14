@@ -1,6 +1,6 @@
-FROM debian:buster
+FROM alpine:3.16
 
-RUN apt-get update && apt-get install -y nginx openssl
+RUN apk update && apk add nginx openssl
 
 # nginx config
 RUN mkdir -p /run/nginx
