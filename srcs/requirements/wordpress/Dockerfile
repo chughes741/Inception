@@ -5,6 +5,7 @@ RUN apk add --no-cache	\
 		wget			\
         tar				\
 		mariadb-client	\
+		php				\
 		php-fpm
 
 
