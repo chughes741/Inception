@@ -36,11 +36,12 @@ services:
     networks:
       - backend
     restart: always
-    # environment:
-      # ROOT_PW
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DB_DIR: ${MYSQL_DB_DIR}
       # DB_NAME
-      # DB_PW
-      # DB_UN
 
 volumes:
   mariadb-data:
