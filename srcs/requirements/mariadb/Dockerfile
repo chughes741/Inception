@@ -1,7 +1,4 @@
-FROM alpine:3.16
-
-# Install MariaDB
-RUN apk update && apk add mariadb mariadb-client
+FROM mariadb
 
 # Run
 COPY tools/config.sh /tmp/config.sh

@@ -23,8 +23,9 @@ services:
       - frontend
       - backend
     restart: always
-    # environment:
-      # - name=value
+    environment:
+      WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
+      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
 
   mariadb:
     container_name: mariadb
@@ -41,7 +42,6 @@ services:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MARIA_DB_DIR: ${MARIA_DB_DIR}
-      # DB_NAME
 
 volumes:
   mariadb-data:
