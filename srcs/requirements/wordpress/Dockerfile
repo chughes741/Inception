@@ -13,7 +13,6 @@ COPY conf/www.conf /etc/php/php-fpm.d/www.conf
 COPY conf/php-fpm.conf /etc/php/php-fpm.conf
 
 # install WordPress
-# install wordpress
 RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 RUN chmod +x wp-cli.phar
 RUN cp wp-cli.phar /usr/bin/wp
