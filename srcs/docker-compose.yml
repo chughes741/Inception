@@ -37,10 +37,10 @@ services:
       - backend
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_RANDOM_ROOT_PASSWORD: ${MYSQL_RANDOM_ROOT_PASSWORD}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      MYSQL_DB_DIR: ${MYSQL_DB_DIR}
+      MARIA_DB_DIR: ${MARIA_DB_DIR}
       # DB_NAME
 
 volumes:
