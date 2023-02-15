@@ -3,11 +3,8 @@
 #------------------------------------------------------------------------------#
 
 # Special variables
-DEFAULT_GOAL: all
-.PHONY: all
-
-# Hide calls
-HIDE =
+DEFAULT_GOAL: compose
+.PHONY: compose clean re
 
 
 #------------------------------------------------------------------------------#
@@ -22,10 +19,11 @@ COMPOSE_FILE	= -f ./srcs/docker-compose.yml
 #                                 TARGETS                                      #
 #------------------------------------------------------------------------------#
 
-all: prune load
+compose:
+	docker-compose $(NAME) $(COMPOSE_FILE) up --build
 
-prune:
-	$(HIDE)docker system prune -f
+clean:
+	docker system prune -f
+	docker volume prune -f
 
-load:
-	$(HIDE)docker-compose $(NAME) $(COMPOSE_FILE) up --build
+re: clean compose
