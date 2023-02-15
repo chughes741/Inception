@@ -1,12 +1,12 @@
 FROM alpine:3.16
 
 # persistent / runtime deps
-RUN apk add --no-cache	\
-		wget			\
-        tar				\
-		mariadb-client	\
-		php				\
-		php-fpm
+RUN apk upgrade && apk add --no-cache \
+ wget \
+ tar \
+ mariadb-client \
+ php8 \
+ php8-fpm
 
 
 # php-fpm config
