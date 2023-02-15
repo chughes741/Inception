@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # Creates /run/mysqld and owns dirs on first run
 if [ ! -d "/run/mysqld" ]; then
 	mkdir -p /run/mysqld
