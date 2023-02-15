@@ -1,21 +1,22 @@
 #!/bin/bash
 
-# mkdir -p /run/mysqld
-# chown -R mysql:mysql /run/mysqld
-# chown -R mysql:mysql /var/lib/mysql
+# Creates /run/mysqld and owns dirs on first run
+if [ ! -d "/run/mysqld" ]; then
+	mkdir -p /run/mysqld
+	chown -R mysql:mysql /run/mysqld
+fi
 
-# This installs a new table onto the volume
-# mysql_install_db \
-	# --user=$MYSQL_USER \
-	# --datadir=/var/lib/mysql \
-	# $>/dev/null
+# This installs a new table onto the volume on first run
+if [ ! -d "/var/lib/mysql/mysql" ]; then
+	chown -R mysql:mysql /var/lib/mysql
 
-# init SQL
-# /usr/bin/mysqld --user=mysql --bootstrap
+	mysql_install_db \
+		--basedir=/usr \
+		--user=$MYSQL_USER \
+		--datadir=/var/lib/mysql
+	
+	mariadbd --user=$MYSQL_USER < /tmp/config.sql
+fi
 
-# /usr/bin/mysql mariadb-data < /tmp/load_data.sql
-
-# exec mariadb --user=$MYSQL_USER
-# exec /usr/bin/mysqld --user=$MYSQL_USER
-
-tail -f /dev/null
+# Run MariaDB server
+exec mariadbd --user=$MYSQL_USER
