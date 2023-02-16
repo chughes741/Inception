@@ -20,5 +20,5 @@ if [ ! -d "/var/lib/mysql/mysql" ]; then
 	mariadbd --user=$MYSQL_USER < /tmp/config.sql
 fi
 
-# Run MariaDB server
-exec mariadbd --user=$MYSQL_USER
+# Returns PID 1 to Docker then handed to RUN mysqld
+exec "$@"
