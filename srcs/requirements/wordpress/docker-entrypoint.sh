@@ -1,17 +1,10 @@
 #!/bin/sh
-set -euo pipefail
+set -e
 
-if [ "${1#-}" != "$1" ] || wp help "$1" > /dev/null 2>&1; then
-	set -- wp "$@"
-fi
+sleep 3
+
+wp config create --allow-root --dbhost=$MYSQL_HOST --dbname=$MYSQL_DATABASE --dbuser=$MYSQL_USER
+wp db create --dbuser=$MYSQL_USER --dbpass=$MYSQL_PASSWORD \
+		--dbhost=$MYSQL_HOST --dbcharset="utf8" --dbcollate="utf8_general_ci" --path="/var/www/html"
 
 exec "$@"
-
-
-# Add info.php page
-# echo "<?php echo phpinfo();?>" > /var/www/html/wordpress/info.php
-
-# while ! mariadb -h$MYSQL_HOST -u$MYSQL_USER@localhost -p$MYSQL_PASSWORD $MYSQL_DATABASE;
-# do 
-	# sleep 3
-# done
