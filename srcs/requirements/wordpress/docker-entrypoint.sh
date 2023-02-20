@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #check if wp-config.php exist
-if [ ! -f ./wp-config.php ] then
+if [ ! -f ./wp-config.php ]; then
 
 	#Download wordpress and all config file
 	wget http://wordpress.org/latest.tar.gz
