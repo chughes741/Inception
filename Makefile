@@ -3,7 +3,7 @@
 #------------------------------------------------------------------------------#
 
 # Special variables
-DEFAULT_GOAL: re
+DEFAULT_GOAL: compose
 .PHONY: compose clean re
 
 
