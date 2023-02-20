@@ -7,6 +7,9 @@ RUN apk add mariadb mariadb-client
 RUN rm -rf /etc/my.cnf
 COPY config/my.cnf /etc/my.cnf
 
+RUN mkdir -p /run/mysqld; \
+	chown -R mysql:mysql /run/mysqld
+
 # Runs setup script
 COPY docker-entrypoint.sh /tmp/docker-entrypoint.sh
 ENTRYPOINT [ "sh", "/tmp/docker-entrypoint.sh" ]

@@ -2,12 +2,6 @@
 
 set -e
 
-# Creates /run/mysqld and owns dirs on first run
-if [ ! -d "/run/mysqld" ]; then
-	mkdir -p /run/mysqld
-	chown -R mysql:mysql /run/mysqld
-fi
-
 # Install mariaDB, create table, and setup privileges 
 if [ ! -d "/var/lib/mysql/mysql" ]; then
 	chown -R mysql:mysql /var/lib/mysql
