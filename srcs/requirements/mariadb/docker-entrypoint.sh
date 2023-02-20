@@ -2,8 +2,6 @@
 
 set -e
 
-mysql_install_db --basedir=/usr --user=$MYSQL_USER --datadir=/var/lib/mysql
-
 /usr/bin/mysqld --bootstrap << EOF
 USE mysql;
 FLUSH PRIVILEGES;
