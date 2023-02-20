@@ -35,8 +35,7 @@ RUN apk add --no-cache \
 
 
 # php-fpm config
-COPY conf/www.conf /etc/php/php-fpm.d/www.conf
-COPY conf/php-fpm.conf /etc/php/php-fpm.conf
+COPY conf/php-fpm.conf /etc/php8/php-fpm.conf
 
 # install WordPress-CLI
 RUN curl -o /usr/local/bin/wp -fL https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar; \
@@ -47,18 +46,10 @@ RUN curl -o /usr/local/bin/wp -fL https://raw.githubusercontent.com/wp-cli/build
 RUN set -ex; \
 	mkdir -p /var/www/html; \
 	chown -R www-data:www-data /var/www/html
-WORKDIR /var/www/html
 
-# Setup Worpress
-RUN wp core download --allow-root --path="/var/www/html"
-
-RUN touch /var/log/php8/error.log; \
-	chown www-data:www-data /var/log/php8/error.log
 
 COPY docker-entrypoint.sh /usr/local/bin/
 ENTRYPOINT [ "sh", "/usr/local/bin/docker-entrypoint.sh" ]
 
-USER www-data
-CMD [ "wp", "shell" ]
-# CMD [ "php-fpm8", "-F" ]
-# CMD [ "tail", "-f", "/dev/null"]
+WORKDIR /var/www/html/wordpress
+CMD [ "php-fpm8", "-F", "-R"]
