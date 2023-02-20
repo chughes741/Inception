@@ -48,9 +48,8 @@ RUN set -ex; \
 	chown -R www-data:www-data /var/www/html
 
 
-WORKDIR /var/www/html
 COPY docker-entrypoint.sh /usr/local/bin/
+WORKDIR /var/www/html
 ENTRYPOINT [ "sh", "/usr/local/bin/docker-entrypoint.sh" ]
 
-WORKDIR /var/www/html/wordpress
 CMD [ "php-fpm8", "-F", "-R"]
