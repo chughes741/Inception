@@ -8,8 +8,8 @@ RUN rm -rf /etc/my.cnf
 COPY config/my.cnf /etc/my.cnf
 
 # Runs setup script
-COPY tools/config.sh /tmp/config.sh
-ENTRYPOINT [ "sh", "/tmp/config.sh" ]
+COPY docker-entrypoint.sh /tmp/docker-entrypoint.sh
+ENTRYPOINT [ "sh", "/tmp/docker-entrypoint.sh" ]
 
 # Loads mysqld as PID 1
 CMD [ "mysqld" ]
