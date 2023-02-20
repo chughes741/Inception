@@ -35,7 +35,7 @@ RUN apk add --no-cache \
 
 
 # php-fpm config
-COPY conf/php-fpm.conf /etc/php8/php-fpm.conf
+COPY conf/www.conf /etc/php8/php-fpm.d/
 
 # install WordPress-CLI
 RUN curl -o /usr/local/bin/wp -fL https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar; \
