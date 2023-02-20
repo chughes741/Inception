@@ -11,7 +11,7 @@ RUN mkdir -p /etc/nginx/ssl
 RUN openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes \
         -out /etc/nginx/ssl/chughes.42.fr.csr \
         -keyout /etc/nginx/ssl/chughes.42.fr.key \
-        -subj "/C=CA/ST=Quebec/L=Quebec/O=42"
+        -subj "/C=CA/ST=Quebec/L=Quebec City/O=42School/OU=42Quebec/CN=chughes.42.fr"
 
 # start nginx
 ENTRYPOINT [ "nginx", "-g", "daemon off;" ]
