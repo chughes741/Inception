@@ -48,6 +48,7 @@ RUN set -ex; \
 	chown -R www-data:www-data /var/www/html
 
 
+WORKDIR /var/www/html
 COPY docker-entrypoint.sh /usr/local/bin/
 ENTRYPOINT [ "sh", "/usr/local/bin/docker-entrypoint.sh" ]
 
