@@ -2,7 +2,7 @@ FROM alpine:3.16
 
 RUN apk update && apk add nginx openssl
 
-RUN mkdir -p /var/www/html /etc/nginx/ssl
+RUN mkdir -p /var/www/html /etc/nginx/ssl /run/nginx
 
 COPY conf/nginx.conf /etc/nginx/http.d/default.conf
 
