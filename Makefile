@@ -19,6 +19,9 @@ COMPOSE_FILE	= -f ./srcs/docker-compose.yml
 #                                 TARGETS                                      #
 #------------------------------------------------------------------------------#
 
+run:
+	docker-compose $(NAME) $(COMPOSE_FILE) up
+
 compose:
 	docker-compose $(NAME) $(COMPOSE_FILE) up --build
 
