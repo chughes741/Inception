@@ -7,6 +7,10 @@ done
 if [ ! -f /tmp/done_config ]; then
 	touch /tmp/done_config
 
+	rm -f /var/www/html/wp-config.php8
+	rm -f /var/www/html/wp-config.php
+	rm -f /etc/php8/php-fpm.d/www.conf
+
 	wp core download --allow-root
     wp config create --dbname=$MYSQL_DATABASE --dbuser=$MYSQL_USER \
 		--dbpass=$MYSQL_PASSWORD --dbhost=$MYSQL_HOST --dbcharset="utf8" \
