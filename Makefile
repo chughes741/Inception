@@ -31,7 +31,7 @@ run: build
 	sudo docker compose up -d $(NAME) $(COMPOSE_FILE)
 
 build:
-	sudo docker compose build
+	cd srcs && sudo docker compose build
 
 clean:
 	sudo docker system prune -f
