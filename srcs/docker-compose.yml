@@ -41,6 +41,10 @@ services:
     env_file:
       - .env
 
+volumes:
+  /home/chughes/data/website:
+  home/chughes/data/database:
+
 networks:
   frontend:
   backend:
