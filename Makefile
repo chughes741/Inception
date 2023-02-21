@@ -28,7 +28,7 @@ clean_eval:
 	docker network rm $$(docker network ls -q) 2>/dev/null
 
 compose:
-	sudo docker-compose up $(NAME) $(COMPOSE_FILE) --build -d
+	sudo docker-compose $(NAME) $(COMPOSE_FILE) up --build -d
 
 clean:
 	sudo docker system prune -f
