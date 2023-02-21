@@ -16,12 +16,6 @@ if [ ! -f /tmp/done_config ]; then
 		--admin_email=$WORDPRESS_ADMIN_EMAIL --skip-email --allow-root
     wp user create $WORDPRESS_USER $WORDPRESS_EMAIL --role=author \
 		--user_pass=$WORDPRESS_PASSWORD --allow-root
-
-	sed -i "s/username_here/$MYSQL_USER/g" wp-config-sample.php
-	sed -i "s/password_here/$MYSQL_PASSWORD/g" wp-config-sample.php
-	sed -i "s/localhost/$MYSQL_HOST/g" wp-config-sample.php
-	sed -i "s/database_name_here/$MYSQL_DATABASE/g" wp-config-sample.php
-	cp -f wp-config-sample.php wp-config.php
 fi
 
 exec "$@"
