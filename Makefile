@@ -3,8 +3,8 @@
 #------------------------------------------------------------------------------#
 
 # Special variables
-DEFAULT_GOAL: compose
-.PHONY: clean_eval run compose clean re
+DEFAULT_GOAL: run
+.PHONY: clean_eval run build clean re
 
 
 #------------------------------------------------------------------------------#
@@ -27,11 +27,11 @@ clean_eval:
 	docker volume rm $$(docker volume ls -q); \
 	docker network rm $$(docker network ls -q) 2>/dev/null
 
-run:
-	sudo docker-compose -d $(NAME) $(COMPOSE_FILE) up
+run: build
+	sudo docker-compose up -d $(NAME) $(COMPOSE_FILE)
 
-compose:
-	sudo docker-compose -d $(NAME) $(COMPOSE_FILE) up --build
+build:
+	sudo docker-compose build $(NAME) $(COMPOSE_FILE)
 
 clean:
 	sudo docker system prune -f
