@@ -37,8 +37,6 @@ RUN apk add --no-cache \
 # php-fpm config
 COPY conf/www.conf /etc/php8/php-fpm.d/
 
-RUN	adduser -S nginx &&	addgroup -S nginx
-
 # install WordPress-CLI
 RUN curl -o /usr/local/bin/wp -fL https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar; \
 	chmod +x /usr/local/bin/wp; \
