@@ -7,9 +7,6 @@ done
 if [ ! -f /tmp/done_config ]; then
 	touch /tmp/done_config
 
-	rm -f /var/www/html/wp-config.php8
-	rm -f /var/www/html/wp-config.php
-
 	wp core download --allow-root
     wp config create --dbname=$MYSQL_DATABASE --dbuser=$MYSQL_USER \
 		--dbpass=$MYSQL_PASSWORD --dbhost=$MYSQL_HOST --dbcharset="utf8" \
@@ -19,6 +16,7 @@ if [ ! -f /tmp/done_config ]; then
 		--admin_email=$WORDPRESS_ADMIN_EMAIL --skip-email --allow-root
     wp user create $WORDPRESS_USER $WORDPRESS_EMAIL --role=author \
 		--user_pass=$WORDPRESS_PASSWORD --allow-root
+	cp wp-config-sample.php wp-config.php
 fi
 
 exec "$@"
