@@ -21,7 +21,7 @@ if [ ! -f /tmp/done_config ]; then
 	sed -i "s/password_here/$MYSQL_PASSWORD/g" wp-config-sample.php
 	sed -i "s/localhost/$MYSQL_HOST/g" wp-config-sample.php
 	sed -i "s/database_name_here/$MYSQL_DATABASE/g" wp-config-sample.php
-	cp wp-config-sample.php wp-config.php
+	cp -f wp-config-sample.php wp-config.php
 fi
 
 exec "$@"
