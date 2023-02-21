@@ -41,10 +41,6 @@ services:
     env_file:
       - .env
 
-volumes:
-  mariadb_data:
-  wordpress_data:
-
 networks:
   frontend:
   backend:
