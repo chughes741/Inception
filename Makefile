@@ -4,7 +4,7 @@
 
 # Special variables
 DEFAULT_GOAL: compose
-.PHONY: clean_eval run compose clean re
+.PHONY: clean_eval compose clean re
 
 
 #------------------------------------------------------------------------------#
