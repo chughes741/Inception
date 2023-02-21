@@ -11,8 +11,6 @@ services:
     networks:
       - frontend
     restart: unless-stopped
-    # extra_hosts:
-      # - localhost:chughes.42.fr
 
   wordpress:
     container_name: wordpress
