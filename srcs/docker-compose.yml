@@ -34,7 +34,7 @@ services:
     expose:
       - "3306"
     volumes:
-      - home/chughes/data/database:/var/lib/mysql
+      - /home/chughes/data/database:/var/lib/mysql
     networks:
       - backend
     restart: unless-stopped
@@ -43,7 +43,7 @@ services:
 
 volumes:
   /home/chughes/data/website:
-  home/chughes/data/database:
+  /home/chughes/data/database:
 
 networks:
   frontend:
